@@ -1,0 +1,222 @@
+{% extends 'pages/layout.html' %}
+{% block body %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Edit Product</h1>
+            {% include 'includes/_flashmsg.html' %}
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            {% for product in product%}
+                            <form role="form" enctype=multipart/form-data class="" action="/edit_product?id={{product.id}}"
+                                  method="post">
+                                <div class="form-group">
+                                    <label>Ürün İsmi</label>
+                                    <input class="form-control" required="required" name="name" value="{{product.pName}}" placeholder="İsim girin">
+                                </div>
+                                <div class="form-group">
+                                    <label>Fiyatı</label>
+                                    <input class="form-control" required="required" name="price" value="{{product.price}}" placeholder="Fiyat girin">
+                                </div>
+                                <div class="form-group">
+                                    <label>Açıklama</label>
+                                    <textarea class="form-control" required="required" name="description" rows="3"
+                                              placeholder="Write product description">{{product.description}}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mevcut</label>
+                                    <input class="form-control" required="required" value="{{product.available}}" name="available" placeholder="Mevcut">
+                                </div>
+                                <div class="form-group">
+                                    <label>Kategoriler</label>
+                                    <select class="form-control" id="category_id" onchange="populateList();"
+                                            name="category">
+                                        {% if product.category == 'tshirt' %}
+                                        <option value="tshirt" selected>Tişört</option>
+                                        {% else %}
+                                        <option value="tshirt">T-Shirt</option>
+                                        {% endif %}
+                                        {% if product.category == 'wallet' %}
+                                        <option value="wallet" selected>Cüzdan </option>
+                                        {% else %}
+                                        <option value="wallet">Wallet</option>
+                                        {% endif %}
+                                        {% if product.category == 'belt' %}
+                                        <option value="belt" selected>Kemer</option>
+                                        {% else %}
+                                        <option value="belt">Belt</option>
+                                        {% endif %}
+                                        {% if product.category == 'shoes' %}
+                                        <option value="shoes" selected>Ayakkabı</option>
+                                        {% else %}
+                                        <option value="shoes">Shoes</option>
+                                        {% endif %}                                        
+                                    </select>
+                                </div>
+                                {% for product_level in product_level %}
+                                <div class="form-group level-container">
+                                    {% if product.category == 'tshirt' %}
+                                    <label>Tişört Özellikleri</label>
+                                    <div class="form-group">
+                                        <label class="checkbox-inline active">
+                                            {% if product_level.v_shape == 'yes' %}
+                                            <input type="checkbox" checked name="tshirt" value="düz">Düz
+                                            {% else%}
+                                            <input type="checkbox" name="tshirt" value="düz">Düz
+                                            {% endif %}
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            {% if product_level.polo == 'yes' %}
+                                            <input type="checkbox" checked name="tshirt" value="polo">Polo 
+                                            {% else%}
+                                            <input type="checkbox" name="tshirt" value="polo">Polo 
+                                            {% endif %}
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            {% if product_level.clean_text == 'yes' %}
+                                            <input type="checkbox" checked name="tshirt" value="milli">Milli
+                                            {% else%}
+                                            <input type="checkbox" name="tshirt" value="milli">Milli
+                                            {% endif %}
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            {% if product_level.design == 'yes' %}
+                                            <input type="checkbox" checked name="tshirt" value="tasarım">Tasarım
+                                            {% else%}
+                                            <input type="checkbox" name="tshirt" value="tasarım">Tasarım
+                                            {% endif %}
+                                        </label>
+                                    </div>
+                                    {% endif %}
+                                    {% if product.category == 'wallet' %}
+                                    <label>Cüzdan Özellikleri</label>
+                                    <div class="form-group">
+                                        <label class="checkbox-inline">
+                                            {% if product_level.chain == 'yes' %}
+                                            <input type="checkbox" checked name="wallet" value="deri">Gerçek Deri
+                                            {% else%}
+                                            <input type="checkbox" name="wallet" value="deri">Gerçek Deri
+                                            {% endif %}
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            {% if product_level.leather == 'yes' %}
+                                            <input type="checkbox" checked name="wallet" value="marka">Marka
+                                            {% else%}
+                                            <input type="checkbox" name="wallet" value="marka">Marka
+                                            {% endif %}
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            {% if product_level.design == 'yes' %}
+                                            <input type="checkbox" checked name="wallet" value="suni">Suni Deri
+                                            {% else%}
+                                            <input type="checkbox" name="wallet" value="suni">Suni Deri
+                                            {% endif %}
+                                        </label>                                        
+                                    </div>
+                                    {% endif %}
+                                    {% if product.category == 'belt' %}
+                                    <label>Kemer Özellikleri</label>
+                                    <div class="form-group">
+                                        <label class="checkbox-inline">
+                                            {% if product_level.leather == 'yes' %}
+                                            <input type="checkbox" checked name="belt" value="marka">Marka
+                                            {% else%}
+                                            <input type="checkbox" name="belt" value="marka">Marka
+                                            {% endif %}
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            {% if product_level.hook == 'yes' %}
+                                            <input type="checkbox" checked name="belt" value="süet">Süet
+                                            {% else%}
+                                            <input type="checkbox" name="belt" value="süet">Süet
+                                            {% endif %}
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            {% if product_level.color == 'yes' %}
+                                            <input type="checkbox" checked name="belt" value="rugan">Rugan
+                                            {% else%}
+                                            <input type="checkbox" name="belt" value="rugan">Rugan
+                                            {% endif %}
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            {% if product_level.design == 'yes' %}
+                                            <input type="checkbox" checked name="belt" value="tasarım">Tasarım
+                                            {% else%}
+                                            <input type="checkbox" name="belt" value="tasarım">Tasarım
+                                            {% endif %}
+                                        </label>
+                                    </div>
+                                    {% endif %}
+                                    {% if product.category == 'shoes' %}
+                                    <label>Ayakkabı Özellikleri</label>
+                                    <div class="form-group">
+                                        <label class="checkbox-inline">
+                                            {% if product_level.formal == 'yes' %}
+                                            <input type="checkbox" checked name="shoes" value="bot">Bot
+                                            {% else%}
+                                            <input type="checkbox" name="shoes" value="bot">Bot
+                                            {% endif %}
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            {% if product_level.converse == 'yes' %}
+                                            <input type="checkbox" checked name="shoes" value="spor">Spor
+                                            {% else%}
+                                            <input type="checkbox" name="shoes" value="spor">Spor
+                                            {% endif %}
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            {% if product_level.loafer == 'yes' %}
+                                            <input type="checkbox" checked name="shoes" value="mokasen">Mokasen
+                                            {% else%}
+                                            <input type="checkbox" name="shoes" value="mokasen">Mokasen
+                                            {% endif %}
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            {% if product_level.leather == 'yes' %}
+                                            <input type="checkbox" name="shoes" checked value="rugan">Rugan
+                                            {% else%}
+                                            <input type="checkbox" name="shoes" value="rugan">Rugan
+                                            {% endif %}
+                                        </label>                                        
+                                    </div>
+                                    {% endif %}                                    
+                                </div>
+                                {% endfor %}
+                                <div class="form-group">
+                                    <label>Kategori Parçası</label>
+                                    <input class="form-control" required="required" name="item" value="{{product.item}}" placeholder="Örn:watch/shoes">
+                                </div>
+                                <div class="form-group">
+                                    <label>Ürün Kodu</label>
+                                    <input class="form-control" required="required" value="{{product.pCode}}" name="code" placeholder="Kod girin">
+                                </div>
+                                <div class="form-group">
+                                    <label>Resim Ekle</label>
+                                    <input type="file" name="picture">
+                                </div>
+                                <button type="submit" class="btn btn-default">Onayla</button>
+                            </form>
+                            {% endfor %}
+                        </div>
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->
+{% endblock %}
