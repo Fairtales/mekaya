@@ -3,8 +3,8 @@ Python-Flask E-Ticaret Sitesi
 
 ## İletişim
  
-(i) Facebook: https://www.facebook.com/mohsingram <br>
-(ii) Youtube: https://www.youtube.com/mohsingram <br>
+(i) Facebook: https://www.facebook.com/Muratelber.kaya/ <br>
+(ii) Youtube: https://www.youtube.com/channel/UCEPrBlkej6CbTHmTyh7IuoQ?view_as=subscriber <br>
 
 
 ## Kullanılan Platformlar
