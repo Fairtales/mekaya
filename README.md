@@ -6,7 +6,7 @@ Python-Flask E-Ticaret Sitesi
 (i) Facebook: https://www.facebook.com/Muratelber.kaya/ <br>
 (ii) Youtube: https://www.youtube.com/channel/UCEPrBlkej6CbTHmTyh7IuoQ?view_as=subscriber <br>
 
-##Projenin Çalıştırılması
+## Projenin Çalıştırılması
 
 (i)  Bilgisayarda boş bir klasör açılır.
 (ii) git clone https://github.com/Fairtales/mekaya.git yardımıyla klasöre proje kurulur.
