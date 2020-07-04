@@ -8,12 +8,12 @@ Python-Flask E-Ticaret Sitesi
 
 ## Projenin Çalıştırılması
 
-(i)  Bilgisayarda boş bir klasör açılır.
-(ii) git clone https://github.com/Fairtales/mekaya.git yardımıyla klasöre proje kurulur.
-(iii)pip install -r requirements.txt ile gereksinimler projeye yüklenir.
-(iv) PhpMyAdmin'e girilip boş bir veritabanı oluşturulur.
-(v)  İçe aktar seçeneği ile projenin database klasörü içindeki mekaya.sql eklenir.
-(vi) Terminale python app.py yazılarak proje ayağa kaldırılır.
+(i)  Bilgisayarda boş bir klasör açılır.<br>
+(ii) git clone https://github.com/Fairtales/mekaya.git yardımıyla klasöre proje kurulur.<br>
+(iii)pip install -r requirements.txt ile gereksinimler projeye yüklenir.<br>
+(iv) PhpMyAdmin'e girilip boş bir veritabanı oluşturulur.<br>
+(v)  İçe aktar seçeneği ile projenin database klasörü içindeki mekaya.sql eklenir.<br>
+(vi) Terminale python app.py yazılarak proje ayağa kaldırılır.<br>
 
 
 ## Kullanılan Platformlar
