@@ -6,6 +6,9 @@ Python-Flask E-Ticaret Sitesi
 (i) Facebook: https://www.facebook.com/Muratelber.kaya/ <br>
 (ii) Youtube: https://www.youtube.com/channel/UCEPrBlkej6CbTHmTyh7IuoQ?view_as=subscriber <br>
 
+##Projenin Çalıştırılması
+
+git clone 
 
 ## Kullanılan Platformlar
 ### Front-End
